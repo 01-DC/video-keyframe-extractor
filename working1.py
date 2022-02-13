@@ -1,3 +1,6 @@
+# Working code for extracting key frames
+# Now looking for improvements
+
 import cv2
 import numpy as np
 
