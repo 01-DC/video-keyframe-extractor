@@ -1,8 +1,10 @@
 # Code using image difference hashing algorithm
 # This code gives much better results
 # Using similarity difference hashing
+# Using same input and threshold at 400
 # Tested using dhash (106)
 # Tested using phash (245) not good
+# Tested using ahash (14) worst, finds 2/3 of frames as equal
 
 import cv2
 import numpy as np
@@ -18,7 +20,7 @@ c= 1
 
 success, prev_img= vid.read()
 
-prev_hash= imagehash.phash(Image.fromarray(np.uint8(prev_img)).convert('RGB'), hash_size=64)
+prev_hash= imagehash.average_hash(Image.fromarray(np.uint8(prev_img)).convert('RGB'), hash_size=64)
 
 while success:
     i= 0
@@ -30,7 +32,7 @@ while success:
     if not success:
         break
 
-    curr_hash= imagehash.phash(Image.fromarray(np.uint8(img)).convert('RGB'), hash_size=64)
+    curr_hash= imagehash.average_hash(Image.fromarray(np.uint8(img)).convert('RGB'), hash_size=64)
 
     f.write(str(curr_hash-prev_hash)+'\n')
 
