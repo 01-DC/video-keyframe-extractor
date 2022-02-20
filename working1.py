@@ -1,5 +1,6 @@
 # Working code for extracting key frames
 # Now looking for improvements
+
 # This code uses absolute difference between each consecutive frame to analyse key frames
 # Depends a lot on threshold value to be accurate
 # Even frame skipping does not help
@@ -11,7 +12,6 @@ p_frame_thresh_max= 800000 # modify constant to make more accurate
 p_frame_thresh_min= 700000 # modify constant to make more accurate
 p_frame_count= 0
 
-# input3.mkv is SPM sir class
 vid= cv2.VideoCapture('input3.mkv')
 
 success, prev_frame= vid.read()
@@ -34,4 +34,3 @@ while success:
         prev_frame= curr_frame
 
 vid.release()
-# cv2.destroyAllWindows()

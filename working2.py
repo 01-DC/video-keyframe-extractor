@@ -2,7 +2,7 @@
 # This code gives much better results
 # Using similarity difference hashing
 # Using same input and threshold at 400
-# Tested using dhash (106)
+# Tested using dhash (106) best so far
 # Tested using phash (245) not good
 # Tested using ahash (14) worst, finds 2/3 of frames as equal
 
@@ -12,15 +12,13 @@ from PIL import Image
 import imagehash
 import os
 
-PATH= 'C:/Users/Lenovo/Documents/opencv-project/Input3_Slides'
+PATH= 'C:/Users/Lenovo/Documents/opencv-project/Input1_Slides'
 FRAMES_SKIP= 30
-# vid= cv2.VideoCapture('input2.mkv')
-vid= cv2.VideoCapture('input3.mkv')
+vid= cv2.VideoCapture('input.mkv')
+keyframe_count= 1
 # f= open('frame3.txt', 'w')
-c= 1
 
 success, prev_img= vid.read()
-
 prev_hash= imagehash.dhash(Image.fromarray(np.uint8(prev_img)).convert('RGB'), hash_size=64)
 
 while success:
@@ -31,6 +29,7 @@ while success:
         i+=1
 
     if not success:
+        print('Video END or Video File corrupted.')
         break
 
     curr_hash= imagehash.dhash(Image.fromarray(np.uint8(img)).convert('RGB'), hash_size=64)
@@ -38,11 +37,10 @@ while success:
     # f.write(str(curr_hash-prev_hash)+'\n')
 
     if(curr_hash-prev_hash > 400):
-        print("Selected Frame: ",c)
-        cv2.imwrite(os.path.join(PATH, 'Frame'+str(c)+'.jpg'), img)
-        c+=1
-        # cv2.imshow('selected frame', img)
-        # cv2.waitKey(1000)
+        print("Selected Frame:", keyframe_count, ' @ ', vid.get(cv2.CAP_PROP_POS_MSEC)/1000, 'seconds')
+        cv2.imwrite(os.path.join(PATH, 'Frame'+str(keyframe_count)+'.jpg'), img)
+        keyframe_count+=1
+    
     prev_hash= curr_hash
 
 # f.close()
