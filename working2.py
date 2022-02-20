@@ -11,10 +11,11 @@ import numpy as np
 from PIL import Image
 import imagehash
 import os
+import img2pdf
 
-PATH= 'C:/Users/Lenovo/Documents/opencv-project/Input1_Slides'
-FRAMES_SKIP= 30
-vid= cv2.VideoCapture('input.mkv')
+PATH= 'C:/Users/Lenovo/Documents/opencv-project/Input3_Slides' #Folder to store all slides and merged pdf
+FRAMES_SKIP= 30 
+vid= cv2.VideoCapture('input3.mkv') # Video file name that will be analysed
 keyframe_count= 1
 # f= open('frame3.txt', 'w')
 
@@ -45,3 +46,18 @@ while success:
 
 # f.close()
 vid.release()
+
+print('Please remove any duplicate slides from folder before PDF file is created... ')
+inp= input('Enter q to exit or any other key to continue...')
+
+if inp=='q':
+    exit()
+
+# Using img2pdf library to make merged pdf
+images= []
+for fname in os.listdir(PATH):
+    img_path= os.path.join(PATH, fname)
+    images.append(img_path)
+
+with open(os.path.join(PATH, 'merged_slides.pdf'), 'wb') as f:
+    f.write(img2pdf.convert(images))
