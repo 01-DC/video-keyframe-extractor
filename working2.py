@@ -7,7 +7,8 @@ import imagehash
 from matplotlib import cm
 
 FRAMES_SKIP= 30
-vid= cv2.VideoCapture('input2.mkv')
+# vid= cv2.VideoCapture('input2.mkv')
+vid= cv2.VideoCapture('input3.mkv')
 # f= open('frame2.txt', 'w')
 c= 1
 
