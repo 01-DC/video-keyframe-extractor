@@ -13,7 +13,7 @@ plt.plot(all_data)
 plt.show()
 all_data.sort()
 upper_all_data= all_data[len(all_data)//2:]
-selected_frames= [x for x in all_data if x>0]
+selected_frames= [x for x in all_data if x>400]
 
 print(len(selected_frames))
 print(statistics.mean(all_data))

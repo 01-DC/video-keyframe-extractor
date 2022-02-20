@@ -10,17 +10,18 @@ import cv2
 import numpy as np
 from PIL import Image
 import imagehash
-from matplotlib import cm
+import os
 
+PATH= 'C:/Users/Lenovo/Documents/opencv-project/Input3_Slides'
 FRAMES_SKIP= 30
 # vid= cv2.VideoCapture('input2.mkv')
 vid= cv2.VideoCapture('input3.mkv')
-f= open('frame3.txt', 'w')
+# f= open('frame3.txt', 'w')
 c= 1
 
 success, prev_img= vid.read()
 
-prev_hash= imagehash.average_hash(Image.fromarray(np.uint8(prev_img)).convert('RGB'), hash_size=64)
+prev_hash= imagehash.dhash(Image.fromarray(np.uint8(prev_img)).convert('RGB'), hash_size=64)
 
 while success:
     i= 0
@@ -32,17 +33,17 @@ while success:
     if not success:
         break
 
-    curr_hash= imagehash.average_hash(Image.fromarray(np.uint8(img)).convert('RGB'), hash_size=64)
+    curr_hash= imagehash.dhash(Image.fromarray(np.uint8(img)).convert('RGB'), hash_size=64)
 
-    f.write(str(curr_hash-prev_hash)+'\n')
+    # f.write(str(curr_hash-prev_hash)+'\n')
 
     if(curr_hash-prev_hash > 400):
         print("Selected Frame: ",c)
-        # cv2.imwrite('Frame '+str(c)+'.jpg', img)
+        cv2.imwrite(os.path.join(PATH, 'Frame'+str(c)+'.jpg'), img)
         c+=1
         # cv2.imshow('selected frame', img)
         # cv2.waitKey(1000)
     prev_hash= curr_hash
 
-f.close()
+# f.close()
 vid.release()
