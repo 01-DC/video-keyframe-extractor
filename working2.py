@@ -1,7 +1,8 @@
 # Code using image difference hashing algorithm
 # This code gives much better results
 # Using similarity difference hashing
-# Tested using dhash (1)
+# Tested using dhash (106)
+# Tested using phash (245) not good
 
 import cv2
 import numpy as np
@@ -17,7 +18,7 @@ c= 1
 
 success, prev_img= vid.read()
 
-prev_hash= imagehash.dhash(Image.fromarray(np.uint8(prev_img)).convert('RGB'), hash_size=64)
+prev_hash= imagehash.phash(Image.fromarray(np.uint8(prev_img)).convert('RGB'), hash_size=64)
 
 while success:
     i= 0
@@ -29,7 +30,7 @@ while success:
     if not success:
         break
 
-    curr_hash= imagehash.dhash(Image.fromarray(np.uint8(img)).convert('RGB'), hash_size=64)
+    curr_hash= imagehash.phash(Image.fromarray(np.uint8(img)).convert('RGB'), hash_size=64)
 
     f.write(str(curr_hash-prev_hash)+'\n')
 
