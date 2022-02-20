@@ -1,6 +1,5 @@
 # Script for analysing the comparison value and to determine threshold
 
-from cv2 import mean
 from matplotlib import pyplot as plt
 import statistics
 
