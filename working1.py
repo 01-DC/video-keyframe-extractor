@@ -1,5 +1,8 @@
 # Working code for extracting key frames
 # Now looking for improvements
+# This code uses absolute difference between each consecutive frame to analyse key frames
+# Depends a lot on threshold value to be accurate
+# Even frame skipping does not help
 
 import cv2
 import numpy as np

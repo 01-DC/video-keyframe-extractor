@@ -1,4 +1,7 @@
 # Code using image difference hashing algorithm
+# This code gives much better results
+# Using similarity difference hashing
+# Tested using dhash (1)
 
 import cv2
 import numpy as np
