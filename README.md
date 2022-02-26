@@ -15,7 +15,7 @@
 > _Kya matlab teacher slides nahi upload karte?_
 
 My personal project for extracting slides/keyframes from a class recording/video and make a pdf with the selected images. </br>
-Uses Python, OpenCV and ImageHash.
+Uses Python, OpenCV, ImageHash and matplotlib.
 
 ---
 
@@ -28,6 +28,7 @@ Uses Python, OpenCV and ImageHash.
 - Image to PDF converter module
 - Video analysis progress bar
 - Allows to visualise frame differences using `matplotlib`
+- Allows to adjust extracting threshold to extract more or less slides accordingly
 - Run `frameSelector` module to find that perfect threshold value
 
 ---
@@ -39,6 +40,7 @@ Uses Python, OpenCV and ImageHash.
 - Edit `VIDEO_PATH` variable in `main.py` according to your video file.
 - Run `python main.py`
 - Follow the prompts in terminal
+- Execute `frameSelector.py` to fine tune threshold value after completion of video analysis once.
 - Done
 
 ---
