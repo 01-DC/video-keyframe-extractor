@@ -4,6 +4,7 @@ from PIL import Image
 import imagehash
 import os
 import img2pdf
+import frameSelector
 
 # Important constants and variables
 PATH= 'C:/Users/Lenovo/Documents/opencv-project/ExtractedSlides' #Folder to store all slides and merged pdf
@@ -39,4 +40,22 @@ keyframe_count= 1
     # prev_hash= curr_hash
 
 # f.close()
+selectedFrames= frameSelector.frameSelector()
+
+if not os.path.exists(PATH):
+    os.makedirs(PATH)
+    
+for framePos in selectedFrames:
+    vid.set(cv2.CAP_PROP_POS_FRAMES, framePos-1)
+    success, frame= vid.read()
+
+    if not success:
+        print('Video END or Video File corrupted.')
+        break
+    
+    print("Selected Frame:", keyframe_count, ' @ ', vid.get(cv2.CAP_PROP_POS_MSEC)/1000, 'seconds')
+    cv2.imwrite(os.path.join(PATH, 'Frame{}.jpg'.format(keyframe_count)), frame)
+    keyframe_count+=1
+
+
 vid.release()
