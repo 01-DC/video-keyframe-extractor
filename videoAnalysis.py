@@ -27,7 +27,7 @@ def videoAnalysis(FRAMES_SKIP, VIDEO_PATH):
             i+=1
 
         if not success:
-            print('Video END or Video File corrupted.')
+            print('\nVideo END or Video File corrupted.')
             break
 
         currHash= imagehash.dhash(Image.fromarray(np.uint8(currImg)).convert('RGB'), hash_size=64)
