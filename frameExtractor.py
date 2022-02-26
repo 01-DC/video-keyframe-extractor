@@ -11,7 +11,7 @@ def frameExtractor(PATH, VIDEO_PATH, selectedFrames=None):
         selectedFrames= [i for i in range(0, int(vid.get(cv2.CAP_PROP_FRAME_COUNT)), int(vid.get(cv2.CAP_PROP_FPS)))]
     
     for i, framePos in enumerate(selectedFrames):
-        vid.set(cv2.CAP_PROP_POS_FRAMES, framePos-1)
+        vid.set(cv2.CAP_PROP_POS_FRAMES, framePos)
         success, frame= vid.read()
 
         if not success:
