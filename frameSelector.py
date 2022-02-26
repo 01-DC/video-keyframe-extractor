@@ -9,11 +9,13 @@ def frameSelector() -> list[float]:
             frameHashValue.append(int(x))
             frameNumber.append(float(y))
 
-    plt.plot(frameNumber, frameHashValue)
-    plt.title('Analysed frame difference values')
-    plt.show()
+    ch= input('Plot of analysed values? (Y/N): ')
+    if ch == 'Y':
+        plt.plot(frameNumber, frameHashValue)
+        plt.title('Analysed frame difference values')
+        plt.show()
 
-    thresh= int(input("Enter Threshold value (recommended= 400): "))
+    thresh= int(input("Enter Threshold value (recommended between 350 to 400): "))
 
     selectedFrames= []
     for i, val in enumerate(frameHashValue):
