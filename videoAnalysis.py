@@ -31,4 +31,6 @@ def videoAnalysis(FRAMES_SKIP, VIDEO_PATH):
     vid.release()
 
 if __name__ == '__main__':
-    pass
+    videoPath= input('Enter absolute path of video file with / as separator\n')
+    frameSkip= int(input('Number of frames to skip in between slides\n'))
+    videoAnalysis(frameSkip, videoPath)
