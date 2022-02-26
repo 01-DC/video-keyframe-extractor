@@ -29,3 +29,6 @@ def videoAnalysis(FRAMES_SKIP, VIDEO_PATH):
 
     f.close()
     vid.release()
+
+if __name__ == '__main__':
+    pass
