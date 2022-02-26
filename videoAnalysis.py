@@ -5,7 +5,7 @@ import imagehash
 
 def videoAnalysis(FRAMES_SKIP, VIDEO_PATH):
     vid= cv2.VideoCapture(VIDEO_PATH)
-    f= open('frameHashData.txt', 'w') # For storing and analysing frame hash differences
+    f= open('frameHashData.txt', 'w', buffering=1) # For storing and analysing frame hash differences
 
     success, prevImg= vid.read()
     prevHash= imagehash.dhash(Image.fromarray(np.uint8(prevImg)).convert('RGB'), hash_size=64)

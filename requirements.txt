@@ -1,0 +1,6 @@
+ImageHash
+img2pdf
+matplotlib
+numpy
+opencv-python
+Pillow
