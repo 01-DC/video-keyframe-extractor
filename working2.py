@@ -13,9 +13,11 @@ import imagehash
 import os
 import img2pdf
 
-PATH= 'C:/Users/Lenovo/Documents/opencv-project/Input3_Slides' #Folder to store all slides and merged pdf
-FRAMES_SKIP= 30 
-vid= cv2.VideoCapture('input3.mkv') # Video file name that will be analysed
+# Important constants and variables
+PATH= 'C:/Users/Lenovo/Documents/opencv-project/ExtractedSlides' #Folder to store all slides and merged pdf
+FRAMES_SKIP= 30
+HASH_DIFF_THRESH= 400
+vid= cv2.VideoCapture('input.mkv') # Video file name that will be analysed
 keyframe_count= 1
 # f= open('frame3.txt', 'w')
 
@@ -37,9 +39,9 @@ while success:
 
     # f.write(str(curr_hash-prev_hash)+'\n')
 
-    if(curr_hash-prev_hash > 400):
+    if(curr_hash-prev_hash > HASH_DIFF_THRESH):
         print("Selected Frame:", keyframe_count, ' @ ', vid.get(cv2.CAP_PROP_POS_MSEC)/1000, 'seconds')
-        cv2.imwrite(os.path.join(PATH, 'Frame'+str(keyframe_count)+'.jpg'), img)
+        cv2.imwrite(os.path.join(PATH, 'Frame{}.jpg'.format(keyframe_count)), img)
         keyframe_count+=1
     
     prev_hash= curr_hash
