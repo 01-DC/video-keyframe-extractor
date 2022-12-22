@@ -4,7 +4,7 @@
 
   <p align="center">
     <img alt="OpenCV" width="100px" src="https://img.icons8.com/fluency/144/000000/opencv.png" />
-    <img alt="Python" width="100px" src="https://img.icons8.com/color/144/000000/python--v1.png" />
+    <img alt="Python" width="100px" src="https://img.icons8.com/color/144/ffffff/python--v1.png" />
     <img alt="ImageHash" width="100px" src="https://img.icons8.com/ios/100/ffffff/hashtag-2.png" />
   </p>
   
